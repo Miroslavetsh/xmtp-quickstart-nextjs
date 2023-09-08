@@ -3,6 +3,7 @@ import { Wallet, ethers } from "ethers";
 import React, { useEffect, useState, useRef } from "react";
 import Chat from "./Chat";
 import styles from "./Home.module.css";
+import { useAddress, ConnectWallet } from "@thirdweb-dev/react";
 
 const PEER_ADDRESS = "0x7E0b0363404751346930AF92C80D1fef932Cc48a";
 
@@ -11,6 +12,7 @@ export default function Home() {
   const convRef = useRef(null);
   const clientRef = useRef(null);
   const [signer, setSigner] = useState(null);
+  const address = useAddress();
   const [isConnected, setIsConnected] = useState(false);
   const [isOnNetwork, setIsOnNetwork] = useState(false);
 
@@ -98,6 +100,7 @@ export default function Home() {
       {isConnected && !isOnNetwork && (
         <div className={styles.xmtp}>
           {signer?.address}
+          <ConnectWallet theme="light" />
           <button onClick={initXmtp} className={styles.btnXmtp}>
             Connect to XMTP
           </button>

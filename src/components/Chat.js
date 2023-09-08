@@ -62,7 +62,7 @@ function Chat({ client, messageHistory, conversation }) {
         <input
           type="text"
           className={styles.inputField}
-          onKeyPress={handleInputChange}
+          onKeyDown={handleInputChange}
           onChange={handleInputChange}
           value={inputValue}
           placeholder="Type your text here "
